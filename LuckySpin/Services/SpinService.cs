@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using LuckySpin.Models;
 using LuckySpin.Repositories;
 namespace LuckySpin.Services
@@ -19,7 +20,9 @@ namespace LuckySpin.Services
         public double CalculateAvgWins()
         {
             //TODO: Write logic to use the "real" spinRepository NOT the test data
-            return .1; 
+            double wins = spinRepository.GetSpins()
+           .Count(w => w.IsWinning == true);
+            return (wins + 1) / (spinRepository.GetCount() + 1);
         }
 
         public Spin SpinIt(int luck)
