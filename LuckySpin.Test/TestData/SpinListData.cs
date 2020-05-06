@@ -5,23 +5,28 @@ namespace LuckySpin.Test.TestData
 {
     public class SpinListData
     {
-        public static IEnumerable<Spin> GetSpins()
-        {
-             List<Spin> spins = new List<Spin>
+        private static List<Spin> spins = new List<Spin>
             {
-                new Spin{ Luck = 8, IsWinning=true },
-                new Spin{ Luck = 8, IsWinning=true },
-                new Spin{ Luck = 8, IsWinning=false },
-                new Spin{ Luck = 8, IsWinning=false },
-                new Spin{ Luck = 8, IsWinning=true },
-                new Spin{ Luck = 8, IsWinning=false },
-                new Spin{ Luck = 8, IsWinning=false },
-                new Spin{ Luck = 8, IsWinning=false },
-                new Spin{ Luck = 8, IsWinning=true },
-                new Spin{ Luck = 8, IsWinning=false }
+                new Spin{ Luck = 7, IsWinning=true },
+                new Spin{ Luck = 7, IsWinning=true },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=true },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=true },
+                new Spin{ Luck = 7, IsWinning=false }
             };
 
+        public static IEnumerable<Spin> GetSpins()
+        { 
             return spins;
+        }
+
+        public static int GetCount()
+        {
+            return spins.ToArray().Length;
         }
         
     }

@@ -61,8 +61,8 @@ namespace LuckySpin.Controllers
             //Create the current Spin
             Spin spin = spinService.SpinIt(Luck);
 
-            //Use the service to compute the average wins
-            spin.AverageWins = spinService.CalculateAverage();
+            //Compute the average wins
+            spin.AverageWins = spinService.CalculateAvgWins();
 
             //Add to Spin Repository
             spinRepository.AddSpin(spin);
