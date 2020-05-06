@@ -15,11 +15,18 @@ namespace LuckySpin.Services
 
         }
 
-
-        public double CalculateAvgWins()
+        public double CalculateAvgWins(bool winning)
         {
-            //TODO: Write logic to use the "real" spinRepository NOT the test data
-            return .1; 
+            //TODO: Write logic to use the "real" spinRepository NOT the test data'
+            double wins = 0;
+            if (winning)
+                wins = 1;
+            foreach (Spin s in spinRepository.GetSpins())
+            {
+                if (s.IsWinning == true)
+                    wins++;
+            }
+            return wins / (spinRepository.GetCount() + 1);
         }
 
         public Spin SpinIt(int luck)
