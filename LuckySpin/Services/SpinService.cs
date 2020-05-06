@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
 using LuckySpin.Models;
 using LuckySpin.Repositories;
+
 namespace LuckySpin.Services
 {
     public class SpinService : ISpinService //Makes this class extend the Interface ISpinService
     {
         Random random = new Random();
-
+        public bool IsWinning;
         private ISpinRepository spinRepository;
         //Constructor with Dependency Injection
         public SpinService(ISpinRepository sr)
@@ -19,7 +21,9 @@ namespace LuckySpin.Services
         public double CalculateAvgWins()
         {
             //TODO: Write logic to use the "real" spinRepository NOT the test data
-            return .1; 
+            double wins = spinRepository.GetSpins().Count(s => s.IsWinning) + (IsWinning ? 1 : 0);
+            double spins = spinRepository.GetCount() + 1;
+            return wins / spins;
         }
 
         public Spin SpinIt(int luck)
@@ -28,13 +32,13 @@ namespace LuckySpin.Services
             a = random.Next(1, 10);
             b = random.Next(1, 10);
             c = random.Next(1, 10);
-
+            IsWinning = (a == luck || b == luck || c == luck);
             return new Spin()
             {
                 A = a,
                 B = b,
                 C = c,
-                IsWinning = (a == luck || b == luck || c == luck),
+                IsWinning = IsWinning,
                 Luck = luck
             };
         }
