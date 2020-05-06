@@ -18,16 +18,16 @@ namespace LuckySpin.Test
             //TODO: Use the Setup() and Returns() methods of mockRepo
             //       to arrange for a consistent, expected output based on TestData
 
-            var service = new SpinService(mockRepo.Object);
             mockRepo.Setup(r => r.GetSpins()).Returns(SpinListData.GetSpins());
             mockRepo.Setup(r => r.GetCount()).Returns(SpinListData.GetCount());
+            var service = new SpinService(mockRepo.Object);
 
             //Act - run the method that you are testing and get a result
             double result = service.CalculateAvgWins();
 
             //Assert - compare the expected output from TestData to the method result
             // TODO: check the repo data for the number of previous spins and wins, add one winning spin
-                double wins = 1 /*???*/, count = SpinListData.GetCount();
+                double wins = 4 + 1 /*???*/, count = SpinListData.GetCount() + 1;
                 double expected = wins / count;
             Assert.Equal(expected, result);
         }
