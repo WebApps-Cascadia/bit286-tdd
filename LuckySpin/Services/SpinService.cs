@@ -19,7 +19,13 @@ namespace LuckySpin.Services
         public double CalculateAvgWins()
         {
             //TODO: Write logic to use the "real" spinRepository NOT the test data
-            return 5d/11; 
+            Spin spin = new Spin();
+            double count = spinRepository.GetCount();
+            double result = 0;
+            double win = 4;
+
+            result = (win + 1) / (count+1);
+            return result; 
         }
 
         public Spin SpinIt(int luck)
