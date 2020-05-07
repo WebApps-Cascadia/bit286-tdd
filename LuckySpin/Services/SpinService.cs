@@ -21,10 +21,23 @@ namespace LuckySpin.Services
             //TODO: Write logic to use the "real" spinRepository NOT the test data
             Spin spin = new Spin();
             double count = spinRepository.GetCount();
+            double sum = 1;
             double result = 0;
-            double win = 4;
-
-            result = (win + 1) / (count+1);
+            double win = 0;
+            double loss = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (spin.IsWinning == true)
+                {
+                    win = win + 1;
+                }
+                if (spin.IsWinning == false)
+                {
+                    loss = loss + 1;
+                }
+                sum = loss + win;
+            }
+            result = (win + 1) / (sum + 1);
             return result; 
         }
 
