@@ -7,14 +7,14 @@ namespace LuckySpin.Test.TestData
     {
         private static List<Spin> spins = new List<Spin>
             {
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
+                new Spin{ Luck = 7, IsWinning=false },
                 new Spin{ Luck = 7, IsWinning=true },
                 new Spin{ Luck = 7, IsWinning=true },
                 new Spin{ Luck = 7, IsWinning=false },
-                new Spin{ Luck = 7, IsWinning=false },
                 new Spin{ Luck = 7, IsWinning=true },
-                new Spin{ Luck = 7, IsWinning=false },
-                new Spin{ Luck = 7, IsWinning=false },
-                new Spin{ Luck = 7, IsWinning=false },
                 new Spin{ Luck = 7, IsWinning=true },
                 new Spin{ Luck = 7, IsWinning=false }
             };
