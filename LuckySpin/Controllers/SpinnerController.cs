@@ -62,7 +62,7 @@ namespace LuckySpin.Controllers
             Spin spin = spinService.SpinIt(Luck);
 
             //Compute the average wins
-            spin.AverageWins = spinService.CalculateAvgWins();
+            spin.AverageWins = spinService.CalculateAvgWins(spin.IsWinning);
 
             //Add to Spin Repository
             spinRepository.AddSpin(spin);

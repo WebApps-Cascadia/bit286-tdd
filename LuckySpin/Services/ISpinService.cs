@@ -4,7 +4,7 @@ namespace LuckySpin.Services
 {
     public interface ISpinService
     {
-        public Double CalculateAvgWins();
+        public Double CalculateAvgWins(bool isWinning);
         public Spin SpinIt(int Lucky);
     }
 }
