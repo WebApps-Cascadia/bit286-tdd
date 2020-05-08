@@ -26,16 +26,13 @@ namespace LuckySpin.Services
             double wins = 0;
             for (int i = 1; i < count; i++)
             {
+                wins = 4;
                 if (spin.IsWinning == true)
                 {
-                    wins += 1;
+                    wins++;
                 }
-                else
-                {
-                    wins += 0;
-                }
+                result = (wins + 1) / count;
             }
-            result = (wins + 1) / count;
             return result; 
         }
 
