@@ -13,7 +13,7 @@ namespace LuckySpin.Controllers
     {
         private ISpinService spinService;
         private ISpinRepository spinRepository;
-        
+
         /***
          * Controller Constructor with Dependency Injection of a SpinRepository object
          */
@@ -36,7 +36,8 @@ namespace LuckySpin.Controllers
         [HttpPost]
         public IActionResult Index(Player player)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 //Save the current player in the repository
                 spinRepository.SetPlayer(player);
                 return RedirectToAction("SpinIt");
@@ -46,9 +47,9 @@ namespace LuckySpin.Controllers
 
         /***
          * Spin Action
-         **/  
-         [HttpGet]      
-         public IActionResult SpinIt(int luck) 
+         **/
+        [HttpGet]
+        public IActionResult SpinIt(int luck)
         {
             //Check if enough balance to play, if not drop out to LuckList
             if (!spinRepository.GetPlayer().ChargeSpin())
@@ -62,7 +63,7 @@ namespace LuckySpin.Controllers
             Spin spin = spinService.SpinIt(Luck);
 
             //Compute the average wins
-            spin.AverageWins = spinService.CalculateAvgWins();
+            spin.AverageWins = spinService.CalculateAvgWins(spin.IsWinning);
 
             //Add to Spin Repository
             spinRepository.AddSpin(spin);
@@ -86,7 +87,7 @@ namespace LuckySpin.Controllers
          * ListSpins Action
          **/
 
-         public IActionResult LuckList()
+        public IActionResult LuckList()
         {
             ViewBag.Balance = 0;
             return View(spinRepository.GetSpins());
@@ -94,4 +95,3 @@ namespace LuckySpin.Controllers
 
     }
 }
-
